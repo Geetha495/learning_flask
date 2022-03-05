@@ -25,6 +25,9 @@
 		|_routes.py
 		|_README.md
 
+- Run app 
+	- type : ``` python3 routes.py ```
+
 - Version Control
 	- Create empty repository ```git init ```
 	- add all files using ``` git add  ```
@@ -66,6 +69,21 @@
 			def index():
         			return render_template("index.html")
 		```
+	- Add about page :
+		- write code for about page and add layout by the previous commands
+		- In routes.py, add below code
+			```
+				@app.route("/about")
+				def about():
+					return render_template("about.html")
+			```
+		- To link this to learn more button :
+			```
+				<a href="{{ url_for('about')}}" class="btn-secondary">LEARN MORE</a>
+			```
+		- push all changes to github
+		- To deploy these changes to heroku, type : ``` git push heroku HEAD:master  ```
+
 	
 		
 
