@@ -46,6 +46,33 @@
 	- Deploy using : ```git push heroku HEAD:master```
 	- To open app : ```heroku open```
 
+- Connecting to Database
+  - Install Postgresql (pgAdmin4)
+  - Create a database (learningflask) and  create a table(users) ( using querytool)
+  - To connect to this database from flask
+	- First install flask_sqlalchemy using : ``` pip install flask-sqlalchemy ``` (in venv)
+	- Next, we configure the flask app to use learningflask database by (in routes.py) 
+	```
+		app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://localhost:5432/learningflask'
+	```
+	- Now we make a new file called models.py , this has a datastructure which helps flask read/ write data from users table. This datastructure is called model.
+	- Create a instance of 	``SQLAlchemy()`` call it ``db``, and create a new class which has base class db.Model
+	- To store password in encrypted form, we use a hash function.
+		- Install werkzeug : ``` pip install Werkzeug ```
+		- Import it and use the functions in it like generate_password_hash
+	- Now, to intialse the app using database setup : ``` db.init_app(app) ```
+
+- Creating forms 
+	- To create forms, we can use python extension WebTestFroms ``Flask-WTF``
+	- Install it : ``` pip install flask-wtf ```
+	- Now we make a new file called forms.py,import ``Form`` and create Class SignupForm whose base class is ``Form``
+	- 
+
+
+	- Create a instance of 	``SQLAlchemy()`` call it ``db``, and create a new class which has base class db.Model
+
+
+
 - About my code 
 	- In routes.py, flask app is created using ```Flask(__name__)```
 	- In layout.html, just layout is written , and for index.html code block, we wrote
