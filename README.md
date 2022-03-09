@@ -53,7 +53,7 @@
 	- First install flask_sqlalchemy using : ``` pip install flask-sqlalchemy ``` (in venv)
 	- Next, we configure the flask app to use learningflask database by (in routes.py) 
 	```
-		app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://localhost:5432/learningflask'
+		app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:<your_password>@localhost:5432/learningflask'
 	```
 	- Now we make a new file called models.py , this has a datastructure which helps flask read/ write data from users table. This datastructure is called model.
 	- Create a instance of 	``SQLAlchemy()`` call it ``db``, and create a new class which has base class db.Model
@@ -65,12 +65,15 @@
 - Creating forms 
 	- To create forms, we can use python extension WebTestFroms ``Flask-WTF``
 	- Install it : ``` pip install flask-wtf ```
-	- Now we make a new file called forms.py,import ``Form`` and create Class SignupForm whose base class is ``Form``
-	- 
-
-
+	- Now we make a new file called forms.py,import ``Form`` and create Class SignupForm whose base class is ``Form``, in which we can declare validators,...
 	- Create a instance of 	``SQLAlchemy()`` call it ``db``, and create a new class which has base class db.Model
+	- We create method : POST for forms, so, in routes.py, we check validation and return success or error accordingly.
 
+- Storing to database 
+	- First create an Users instance by intialised it with request data
+	- Now use ``` db.session.add(user)``` to add, ``` db.session.commit()``` to commit.
+	- Here we may get an error that ``` module : psycopg2 ot found ```, then install it by ``` pip install psycopg2-binary```
+	
 
 
 - About my code 
