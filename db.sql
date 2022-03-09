@@ -1,0 +1,11 @@
+DROP  TABLE  users;
+
+CREATE TABLE users(
+	uid serial PRIMARY KEY,
+	firstname VARCHAR(100) NOT NULL,
+	lastname VARCHAR(100) NOT NULL,
+	email VARCHAR(120) NOT NULL UNIQUE,
+	pwdhash VARCHAR(200) NOT NULL
+);
+
+SELECT * FROM users;
