@@ -73,7 +73,17 @@
 	- First create an Users instance by intialised it with request data
 	- Now use ``` db.session.add(user)``` to add, ``` db.session.commit()``` to commit.
 	- Here we may get an error that ``` module : psycopg2 ot found ```, then install it by ``` pip install psycopg2-binary```
-	
+
+- Creating session
+	- what is a session?
+		- AFter user signs in, app needs to identify page request to serve the user.
+		- The app sets a cookie in the browser containing an ID
+		- For each subsequent request, the id is passed on the app.
+		- App checks if this ID matches the user credentials, If does, then app responds with relevant info
+		- This process is called session.
+	- Import session from flask. And do ```session['email']=newuser.email```
+	- When user logins/signups then new session is created.
+	- When user logouts then the session is deleted.	
 
 
 - About my code 
