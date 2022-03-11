@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from models import db, User
-from forms import SignupForm, LoginForm
+from forms import SignupForm, LoginForm, AddressForm
 
 app = Flask(__name__)
 
@@ -13,9 +13,18 @@ app.secret_key = 'development-key'
 def index():
         return render_template("index.html")
 
-@app.route("/home")
+@app.route("/home",methods=['GET','POST'])
 def home():
-        return render_template("home.html")
+        if 'email' not in session:
+                return redirect(url_for('login'))
+        if request.method == 'GET':
+                form = AddressForm()
+                return render_template("home.html",form=form)
+        if request.method == 'POST':
+                form = AddressForm(request.form)
+                if form.validate() == False:
+                        return render_template('home.html',form=form)
+                
 
 
 @app.route("/about")
@@ -24,7 +33,9 @@ def about():
 
 
 @app.route("/signup",methods=['GET','POST'])
-def signup():        
+def signup(): 
+        if 'email' in session:
+                return redirect(url_for('home'))       
         if request.method == 'POST':
                 form = SignupForm(request.form)
                 if form.validate() == False:
@@ -41,6 +52,8 @@ def signup():
        
 @app.route('/login', methods=['GET','POST'])
 def login():
+        if 'email' in session:
+                return redirect(url_for('home'))  
         if request.method == 'GET':
                 form = LoginForm()
                 return render_template('login.html',form=form)

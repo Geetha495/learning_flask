@@ -76,7 +76,7 @@
 
 - Creating session
 	- what is a session?
-		- AFter user signs in, app needs to identify page request to serve the user.
+		- After user signs in, app needs to identify page request to serve the user.
 		- The app sets a cookie in the browser containing an ID
 		- For each subsequent request, the id is passed on the app.
 		- App checks if this ID matches the user credentials, If does, then app responds with relevant info
@@ -85,7 +85,11 @@
 	- When user logins/signups then new session is created.
 	- When user logouts then the session is deleted.	
 
-
+- Authorization :
+	- when a user enters url for home, without logging in, we should redirect user to login page
+	- When a user enters url for login/signup after logging in, then user should be redirected to home page
+	- This can be done with help of session dictionary, by checking whether email is already present or not.
+	
 - About my code 
 	- In routes.py, flask app is created using ```Flask(__name__)```
 	- In layout.html, just layout is written , and for index.html code block, we wrote

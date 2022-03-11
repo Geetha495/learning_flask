@@ -5,6 +5,36 @@
 	<div class="container">
 		<h2>Home</h2>
 		<a href="{{ url_for('logout')}}" class="btn-secondary">LOG OUT</a>
+		
+
+
+
+		<form method="POST" action="login" novalidate>
+			{{  form.hidden_tag  }}
+
+
+
+			<div class="form-group">
+				{{  form.address.label }}
+
+				{% if form.address.errors %}
+
+				{% for address in form.address.errors %}
+				
+					<p class="error-message">{{ error }}</p>
+
+				{% endfor%}
+
+				{% endif%}
+
+				{{ form.address }}
+
+			</div>
+
+			{{ form.search(class="btn-primary") }}
+
+
+		</form>
 	</div>
 </main>
 

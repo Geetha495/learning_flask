@@ -17,3 +17,6 @@ class LoginForm(Form):
         password = PasswordField('Password',validators=[DataRequired("Please enter Password"),length(min=5,message="Password should contain atleast 5 characters")])
         submit = SubmitField('Login')
 
+class AddressForm(Form):
+        address = StringField('Address',validators=[DataRequired("Please enter an address")])
+        search = SubmitField('Search')
